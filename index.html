@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+
+
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="container">
+        <form id="formdados" method="post" target="_blank">
+            <h1 class="col-sm-12">Formulário</h1>
+            <div class="form-group col-sm-6">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="form-control">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" id="sobrenome" class="form-control">
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="email">Email</label>
+                <input type="email" id="email" maxlength="40" onkeyup="gerarLogin()" class="form-control">
+
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="login">Login</label>
+                <input type="login" id="login" maxlength="12" class="form-control" type="text" disabled>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="senha">Senha</label>
+                <input type="password" id="pass" class="form-control">
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="cep">CEP</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="rua">Rua</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="rua">Complemento</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="github">Perfil do Github</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="academia">Academia</label>
+                <select class="form-control">
+                    <option></option>
+                    <option>Java</option>
+                    <option>NET</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="professor">Professores</label>
+                <select class="form-control">
+                    <option></option>
+                    <option>Herysson</option>
+                    <option>Lucas</option>
+                    <option>Deivison</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="Linkedin">Linkedin</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="termos">Termos de uso</label>
+                <textarea class="form-control" id="termos" rows="3"
+                    placeholder="Este documento, e todo o conteúdo do site é oferecido por Academia Java, neste termo representado apenas por “EMPRESA”, que regulamenta todos os direitos e obrigações com todos que acessam o site, denominado neste termo como “VISITANTE”, reguardado todos os direitos previstos na legislação, trazem as cláusulas abaixo como requisito para acesso e visita do mesmo, situado no endereço"></textarea>
+
+            </div>
+            <div class="col-sm-12">
+                <input class="form-check-input" type="checkbox" value="termos" id="termos">
+                <label class="form-check-label" for="termos">
+                    Aceitar os termos de uso
+                </label>
+
+                <div style="float: right;">
+                    <input class="form-check-input" type="checkbox" value="termos" id="termos">
+                    <label class="form-check-label" for="termos">
+                        Receber emails informmativos do sistema
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <input type="submitt" class="btn btn-primary" onclick="enviar();" value="Enviar" />
+                <input type="reset" class="btn btn-danger" value="Limpar Campos" />
+            </div>
+        </form>
+    </div>
+    <hr>
+
+    <!-- Dadaos Enviados -->
+    <div class="container">
+        <h1 class="col-sm-6">Dados recebidos</h1>
+        <div class="col-sm-12">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr class="bg-primary">
+                        <th>Input</th>
+                        <th>Recebido</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Nome</td>
+                        <td class="resultados">
+                            <div id="result-nome"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sobrenome</td>
+                        <td class="resultados">
+                            <div id="result-sobrenome"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td class="resultados">
+                            <div id="result-email"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Login</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Senha</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CEP</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Rua</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Complemento</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Bairro</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cidade</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Perfil do Github</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Academia</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Professor</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Linkedin</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Termos de Uso</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Newsletter</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+</html>
